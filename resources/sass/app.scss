@@ -8,7 +8,110 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+// Custom Card Styling
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+body {
+  margin: 0;
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #858796;
+  text-align: left;
+  background-color: #fff;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.border-left-primary {
+  border-left: 0.25rem solid #4e73df !important;
+}
+
+.border-left-success {
+  border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-left-info {
+  border-left: 0.25rem solid #36b9cc !important;
+}
+
+.border-left-warning {
+  border-left: 0.25rem solid #f6c23e !important;
+}
+
+.border-left-danger {
+  border-left: 0.25rem solid #e74a3b !important;
+}
+
+.border-bottom-primary {
+  border-bottom: 0.25rem solid #4e73df !important;
+}
+
+.border-bottom-success {
+  border-bottom: 0.25rem solid #1cc88a !important;
+}
+
+.border-bottom-info {
+  border-bottom: 0.25rem solid #36b9cc !important;
+}
+
+.border-bottom-warning {
+  border-bottom: 0.25rem solid #f6c23e !important;
+}
+
+.border-bottom-danger {
+  border-bottom: 0.25rem solid #e74a3b !important;
+}
+
+
+.card {
+    .card-header {
+      // Format Dropdowns in Card Headings
+      .dropdown {
+        line-height: 1;
+        .dropdown-menu {
+          line-height: 1.5;
+        }
+      }
+    }
+    // Collapsable Card Styling
+    .card-header[data-toggle="collapse"] {
+      text-decoration: none;
+      position: relative;
+      padding: 0.75rem 3.25rem 0.75rem 1.25rem;
+      &::after {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding-right: 1.725rem;
+        line-height: 51px;
+        font-weight: 900;
+        content: '\f107';
+        font-family: 'Font Awesome 5 Free';
+        color: $gray-400;
+      }
+      &.collapsed {
+        border-radius: $card-border-radius;
+        &::after {
+          content: '\f105';
+        }
+      }
+    }
+  }
+  

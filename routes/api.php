@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('bitacora', 'BitacoraController@index')
+        ->name('bitacora_get');
+
+Route::get('insertar', 'BitacoraController@store');
+
+Route::get('editar', 'BitacoraController@edit');
+
+Route::get('terminar-recorrido', 'BitacoraController@terminarRecorrido');
+
+Route::get('ultimo', 'BitacoraController@getLast');

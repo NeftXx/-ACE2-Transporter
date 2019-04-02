@@ -3,5 +3,6 @@
 @section('titulo', 'Inicio')
 
 @section('container')
-    <dash-board-component></dash-board-component>
+{{-- <donut-component></donut-component>
+<barra-component></barra-component> --}}
 @endsection
