@@ -3,5 +3,5 @@
 @section('titulo', 'Inicio')
 
 @section('container')
-    <dash-board-component></dash-board-component>
+<listaapis-component></listaapis-component>
 @endsection
