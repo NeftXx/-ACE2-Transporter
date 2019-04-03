@@ -20,8 +20,8 @@ class CreateBitacoraTable extends Migration
             $table->double('peso', 8, 2)->default(0);
             $table->integer('obstaculos')->default(0);
             $table->integer('tiempo_espera_obs')->default(0);
-            $table->timestamp('inicio')->useCurrent();
-            $table->timestamp('fin')->useCurrent();
+            $table->integer('tiempo_inicio')->default(0);
+            $table->integer('tiempo_fin')->default(0);
         });
     }
 

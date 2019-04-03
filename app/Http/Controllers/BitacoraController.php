@@ -9,7 +9,8 @@ use Carbon\Carbon;
 
 class BitacoraController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return Bitacora::all();
     }
 
@@ -17,15 +18,9 @@ class BitacoraController extends Controller
         'numeric' => 'Debe de ser un numero.',
     ];
 
-    public function store(Request $request) {
-
-        $validator = Validator::make($request->all(), [
-            'velocidad' => 'nullable|numeric',
-            'distancia' => 'nullable|numeric',
-            'peso' => 'nullable|numeric',
-            'obstaculos' => 'nullable|numeric',
-            'tiempo_espera_obs' => 'nullable|numeric',
-        ], $this->messages);
+    public function store(Request $request)
+    {
+        $validator = $this->validar($request);
 
         if ($validator->fails()) {
             return $validator->errors();
@@ -34,31 +29,30 @@ class BitacoraController extends Controller
         $data = $validator->validate();
 
         if (empty($data)) {
-            $data['velocidad'] = 0;
-            $data['distancia'] = 0;
-            $data['peso'] = 0;
-            $data['obstaculos'] = 0;
-            $data['tiempo_espera_obs'] = 0;
+            $data['peso']               = 0;
+            $data['velocidad']          = 0;
+            $data['obstaculos']         = 0;
+            $data['tiempo_fin']         = 0;
+            $data['tiempo_inicio']      = 0;
+            $data['tiempo_espera_obs']  = 0;
         }
+
+        $data['distancia'] = $data['velocidad'] * $data['tiempo_inicio'] +
+                                $data['velocidad'] * $data['tiempo_fin'];
 
         $bitacora = Bitacora::create($data);
         return $bitacora;
     }
 
-    public function edit(Request $request) {
-        $bitacora = $this->getLast();       
-        
+    public function edit(Request $request)
+    {
+        $bitacora = $this->getLast();
+
         if ($bitacora == null) {
             return 'No hay registros';
         }
 
-        $validator = Validator::make($request->all(), [
-            'velocidad' => 'nullable|numeric',
-            'distancia' => 'nullable|numeric',
-            'peso' => 'nullable|numeric',
-            'obstaculos' => 'nullable|numeric',
-            'tiempo_espera_obs' => 'nullable|numeric',
-        ], $this->messages);
+        $validator = $this->validar($request);
 
         if ($validator->fails()) {
             return $validator->errors();
@@ -90,27 +84,52 @@ class BitacoraController extends Controller
             $bitacora->tiempo_espera_obs = $data['tiempo_espera_obs'];
         }
 
+        $bitacora->distancia = $bitacora->velocidad * $bitacora->tiempo_inicio + 
+                                $bitacora->velocidad * $bitacora->tiempo_fin;
+
         $bitacora->save();
 
         return $bitacora;
     }
 
-    public function terminarRecorrido() {
-        $bitacora = $this->getLast();       
-        
+    public function terminarRecorrido(Request $request)
+    {
+        $bitacora = $this->getLast();
+
         if ($bitacora == null) {
             return 'No hay registros';
         }
 
-        $bitacora->fin = Carbon::now()->toDateTimeString();
+        if ($request->tiempo_final != null) {
+            $bitacora->fin = $request->tiempo_final;
+        }
 
         $bitacora->save();
-        
+
         return $bitacora;
     }
 
-    public function getLast() {
+    public function getLast()
+    {
         $bitacora = Bitacora::all();
         return $bitacora->last();
+    }
+
+    public function obtenerPromedios()
+    {
+        return \DB::select('EXEC obtener_promedios;');
+    }
+
+    public function validar(Request $request)
+    {
+        return Validator::make($request->all(), [
+            'velocidad' => 'nullable|numeric',
+            'distancia' => 'nullable|numeric',
+            'peso' => 'nullable|numeric',
+            'obstaculos' => 'nullable|numeric',
+            'tiempo_espera_obs' => 'nullable|numeric',
+            'tiempo_inicio' => 'nullable|numeric',
+            'tiempo_fin' => 'nullable|numeric',
+        ], $this->messages);
     }
 }

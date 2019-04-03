@@ -18,3 +18,11 @@ Route::get('/', function () {
 Route::get('/api', function() {
     return view('api');
 });
+
+Route::get('/recorridos', function() {
+    return view('recorridos');
+});
+
+Route::get('/recorrido/{id}', function() {
+    return view('recorrido');
+});
