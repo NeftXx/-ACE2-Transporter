@@ -1909,14 +1909,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      info: null
+      info: {
+        velocidad_promedio: 0,
+        distancia_promedio: 0,
+        peso_promedio: 0,
+        obstaculos_promedio: 0,
+        espera_promedio: 0,
+        inicio_promedio: 0,
+        fin_promedio: 0
+      }
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('https://transporter.azurewebsites.net/api/promedios').then(function (response) {
+    axios.get('/api/promedios').then(function (response) {
       return _this.info = response.data[0];
+    }).catch(function (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+
+      console.log(error.config);
     });
   },
   components: {
