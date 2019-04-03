@@ -9,7 +9,6 @@ Vue.component('donut-component', require('./components/DonutComponent.vue').defa
 Vue.component('barra-component', require('./components/BarraComponent.vue').default);
 Vue.component('line-component', require('./components/LineComponent.vue').default);
 Vue.component('navbar-component', require('./components/NavBarComponent.vue').default);
-Vue.component('listaapis-component', require('./components/ListaApisComponent.vue').default);
 Vue.component('card-component', require('./components/CardComponent.vue').default);
 Vue.component('dash-board-component', require('./components/DashBoardComponent.vue').default);
 
