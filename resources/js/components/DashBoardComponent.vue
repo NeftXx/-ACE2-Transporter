@@ -53,7 +53,7 @@ export default {
 
     mounted () {
         axios
-        .get('http://127.0.0.1:8000/api/promedios')
+        .get('https://transporter.azurewebsites.net/api/promedios')
         .then(response => (this.info = response.data[0]))
     },
 
