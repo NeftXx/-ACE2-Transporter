@@ -1924,7 +1924,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/promedios').then(function (response) {
-      return _this.info = response.data[0];
+      _this.info = response.data[0];
+      console.log(_this.info);
     }).catch(function (error) {
       if (error.response) {
         console.log(error.response.data);

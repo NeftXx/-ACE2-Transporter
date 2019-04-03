@@ -62,7 +62,10 @@ export default {
     mounted () {
         axios
         .get('/api/promedios')
-        .then((response) => (this.info = response.data[0]))
+        .then((response) => {
+            this.info = response.data[0]
+            console.log(this.info);
+        })
         .catch((error) => {
             if (error.response) {
                 console.log(error.response.data);
