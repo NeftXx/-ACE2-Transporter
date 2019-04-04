@@ -1,6 +1,5 @@
 <template>
 <div id="barra">
-    <h1>Bar chart</h1>
     <bar-chart
         id="bar"
         :data="barData"

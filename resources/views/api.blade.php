@@ -9,7 +9,7 @@
     </div>
     <div class="card-body text-dark">
         <h5 class="card-title">
-            <a href="https://transporter.azurewebsites.net/api/bitacora">
+            <a href="/api/bitacora">
                 https://transporter.azurewebsites.net/api/bitacora
             </a>
         </h5>
@@ -30,7 +30,7 @@
             El siguiente link agrega un nuevo recorrido, si la ruta va vacia se crea un recorrido con campos vacios:
             <br/>
 
-            <a href="https://transporter.azurewebsites.net/api/nuevo-recorrido">
+            <a href="/api/nuevo-recorrido">
                 https://transporter.azurewebsites.net/api/nuevo-recorrido
             </a>
             
@@ -41,7 +41,7 @@
         <p class="card-text">
             Esta ruta puede crear nuevos recorridos con valores establecidos, como por ejemplo:
             <br/>
-            <a href="https://transporter.azurewebsites.net/api/nuevo-recorrido?velocidad=10&peso=4">
+            <a href="/api/nuevo-recorrido?velocidad=10&peso=4">
                 https://transporter.azurewebsites.net/api/nuevo-recorrido?velocidad=10&peso=4
             </a>
             <br/>
@@ -62,7 +62,7 @@
             El siguiente link edita un recorrido, si la ruta va vacia
             retorna el ultimo recorrido:
             <br/>
-            <a href="https://transporter.azurewebsites.net/api/editar-recorrido">
+            <a href="/api/editar-recorrido">
                 https://transporter.azurewebsites.net/api/editar-recorrido
             </a>
         </p>
@@ -70,7 +70,7 @@
         <p class="card-text">
             Esta ruta edita el ultimo recorrido con los parametros establecidos:
                 <br/>
-                <a href="https://transporter.azurewebsites.net/api/editar-recorrido?velocidad=10&peso=4">
+                <a href="/api/editar-recorrido?velocidad=10&peso=4">
                     https://transporter.azurewebsites.net/api/editar-recorrido?velocidad=10&peso=4
                 </a>
                 <br/>
@@ -89,7 +89,7 @@
     <div class="card-body text-dark">
         <p class="card-text">
             Con esta ruta termina el recorrido:
-            <a href="https://transporter.azurewebsites.net/api/terminar-recorrido">
+            <a href="/api/terminar-recorrido">
                 https://transporter.azurewebsites.net/api/terminar-recorrido
             </a>
         </p>
@@ -97,7 +97,7 @@
             Si la ruta viene vacia solamente retorna el ultimo registro, en el caso que
             que se le envie el parametro tiempo_final, este lo actualizara:
 
-            <a href="https://transporter.azurewebsites.net/api/terminar-recorrido?tiempo_final=10">
+            <a href="/api/terminar-recorrido?tiempo_final=10">
                 https://transporter.azurewebsites.net/api/terminar-recorrido?tiempo_final=10
             </a>
         </p>
@@ -113,11 +113,35 @@
     <div class="card-body text-dark">
         <p class="card-text">
             Esta ruta retorna el recorrido actual:
-            <a href="https://transporter.azurewebsites.net/api/recorrido-actual">
+            <a href="/api/recorrido-actual">
                 https://transporter.azurewebsites.net/api/recorrido-actual
             </a>
         </p>
     </div>
 </div>
 <br/>
+
+<div class="card border-dark">
+    <div class="card-header">
+        EJEMPLO
+    </div>
+    <div class="card-body text-dark">
+        <p class="card-text">
+            Pequeño ejemplo de como realizar un recorrido:
+            <br/>
+            Crear Recorrido
+            <a href="/api/nuevo-recorrido?velocidad=10&peso=4&obstaculos=1&tiempo_espera_obs=0&tiempo_inicio=10">
+                https://transporter.azurewebsites.net/api/nuevo-recorrido?velocidad=10&peso=4&obstaculos=1&tiempo_espera_obs=0&tiempo_inicio=10
+            </a>
+            <br/>
+            Terminar Recorrido
+            <a href="/api/terminar-recorrido?tiempo_fin=10">
+                https://transporter.azurewebsites.net/api/terminar-recorrido?tiempo_fin=10
+            </a>
+            <br/>
+        </p>
+    </div>
+</div>
+<br/>
+
 @endsection

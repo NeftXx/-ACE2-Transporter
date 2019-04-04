@@ -28,13 +28,28 @@ class BitacoraController extends Controller
 
         $data = $validator->validate();
 
-        if (empty($data)) {
-            $data['peso']               = 0;
-            $data['velocidad']          = 0;
-            $data['obstaculos']         = 0;
-            $data['tiempo_fin']         = 0;
-            $data['tiempo_inicio']      = 0;
-            $data['tiempo_espera_obs']  = 0;
+        if (!(array_key_exists('velocidad', $data))) {
+            $data['velocidad'] = 0;
+        }
+
+        if (!(array_key_exists('peso', $data))) {
+            $data['peso'] = 0;
+        }
+
+        if (!(array_key_exists('obstaculos', $data))) {
+            $data['obstaculos'] = 0;
+        }
+
+        if (!(array_key_exists('tiempo_espera_obs', $data))) {
+            $data['tiempo_espera_obs'] = 0;
+        }
+
+        if (!(array_key_exists('tiempo_fin', $data))) {
+            $data['tiempo_fin'] = 0;
+        }
+
+        if (!(array_key_exists('tiempo_inicio', $data))) {
+            $data['tiempo_inicio'] = 0;
         }
 
         $data['distancia'] = $data['velocidad'] * $data['tiempo_inicio'] +
@@ -99,12 +114,11 @@ class BitacoraController extends Controller
         if ($bitacora == null) {
             return 'No hay registros';
         }
-
-        if ($request->tiempo_final != null) {
-            $bitacora->fin = $request->tiempo_final;
+        $data = $request->all();
+        if ($data['tiempo_fin'] != null) {
+            $bitacora->tiempo_fin = $data['tiempo_fin'];
+            $bitacora->save();
         }
-
-        $bitacora->save();
 
         return $bitacora;
     }
