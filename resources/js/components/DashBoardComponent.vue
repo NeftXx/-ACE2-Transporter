@@ -47,14 +47,37 @@ import CardComponent from './CardComponent'
 export default {
     data () {
         return {
-            info: null
+            info: {
+                velocidad_promedio: 0,
+                distancia_promedio: 0,
+                peso_promedio: 0,
+                obstaculos_promedio: 0,
+                espera_promedio: 0,
+                inicio_promedio: 0,
+                fin_promedio: 0,
+            }
         }
     },
 
     mounted () {
         axios
-        .get('https://transporter.azurewebsites.net/api/promedios')
-        .then(response => (this.info = response.data[0]))
+        .get('/api/promedios')
+        .then((response) => {
+            this.info = response.data[0]
+            console.log(this.info);
+        })
+        .catch((error) => {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+            console.log(error.config);
+        });
     },
 
     components: {
