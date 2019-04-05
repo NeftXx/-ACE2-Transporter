@@ -5,7 +5,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{atributo}}</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">{{valor}}</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{valor}} {{dimensional}}</div>
           </div>
           <div class="col-auto">
             <i v-bind:class="[icono]"></i>
@@ -19,6 +19,6 @@
 <script>
 export default {
   name: "mycard",
-  props: ["border", "atributo", "valor", "icono"]
+  props: ["border", "atributo", "valor", "icono", "dimensional"]
 };
 </script>
