@@ -17,7 +17,7 @@
         <div id="content">
                 <div id="app">
                     <navbar-component></navbar-component>
-                    <div class="container-fluid">                    
+                    <div class="container-fluid" style="margin-top: 60px">                    
                         @yield('container')
                     </div>
                 </div>

@@ -11,7 +11,7 @@ class BitacoraController extends Controller
 {
     public function index()
     {
-        return Bitacora::all();
+        return \DB::select('EXEC obtener_recorridos;');
     }
 
     private $messages = [
@@ -132,6 +132,26 @@ class BitacoraController extends Controller
     public function obtenerPromedios()
     {
         return \DB::select('EXEC obtener_promedios;');
+    }
+
+    public function obtener_ultimos_10()
+    {
+        return \DB::select('EXEC obtener_ultimos_10;');
+    }
+
+    public function obtener_velocidades()
+    {
+        return \DB::select('EXEC obtener_velocidades;');
+    }
+
+    public function calcular_distancia()
+    {
+        return \DB::select('EXEC calcular_distancia;');
+    }
+
+    public function obtener_distancias()
+    {
+        return \DB::select('EXEC obtener_distancias;');
     }
 
     public function validar(Request $request)

@@ -123,6 +123,38 @@
 
 <div class="card border-dark">
     <div class="card-header">
+        OTRAS RUTAS
+    </div>
+    <div class="card-body text-dark">
+        <a href="/api/bitacora">
+            https://transporter.azurewebsites.net/api/bitacora
+        </a>
+        <br/>
+        <a href="/api/promedios">
+            https://transporter.azurewebsites.net/api/promedios
+        </a>
+        <br/>
+        <a href="/api/ultimos-tiempos">
+            https://transporter.azurewebsites.net/api/ultimos-tiempos
+        </a>
+        <br/>
+        <a href="/api/velocidades">
+            https://transporter.azurewebsites.net/api/velocidades
+        </a>
+        <br/>
+        <a href="/api/distancia-total">
+            https://transporter.azurewebsites.net/api/distancia-total
+        </a>
+        <br/>
+        <a href="/api/distancias">
+            https://transporter.azurewebsites.net/api/distancias
+        </a>
+    </div>
+</div>
+
+<br/>
+<div class="card border-dark">
+    <div class="card-header">
         EJEMPLO
     </div>
     <div class="card-body text-dark">
